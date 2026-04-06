@@ -20,20 +20,102 @@
 | 🧠 **自动学习** | 检测重复任务，主动问你「要不要生成 Skill」 |
 | 💬 **简化模式** | 说「简化模式」，AI 用大白话跟你聊 |
 
-## 🚀 快速体验
+---
+
+## 🚀 部署指南 / Deployment Guide
+
+### 📌 前置要求 / Prerequisites
+
+| 项目 | 要求 |
+|------|------|
+| OpenClaw | 已安装并正常运行 |
+| 系统 | Windows / macOS / Linux |
+
+---
+
+### 🪟 Windows 部署 / Windows Deployment
+
+**方法一：手动复制（推荐新手）**
+
+1. 打开 PowerShell，创建目录：
+   ```powershell
+   mkdir "$env:USERPROFILE\.qclaw\workspace\skills\skill-generator" -Force
+   ```
+
+2. 下载 SKILL.md 文件到该目录
+
+3. 重启 OpenClaw 使其加载新 Skill
+
+**方法二：命令行安装**
+
+```powershell
+# 克隆仓库
+git clone https://github.com/DYF996/skill-generator.git "$env:USERPROFILE\.qclaw\workspace\skills\skill-generator"
+
+# 或者手动下载并解压到该目录
+```
+
+---
+
+### 🍎 macOS / Linux 部署
+
+**方法一：手动复制**
 
 ```bash
-# 把 SKILL.md 放到你的 OpenClaw skills 目录
-~/.qclaw/skills/skill-generator/SKILL.md
+# 创建目录
+mkdir -p ~/.qclaw/workspace/skills/skill-generator
+
+# 下载文件
+curl -O https://raw.githubusercontent.com/DYF996/skill-generator/main/SKILL.md
+mv SKILL.md ~/.qclaw/workspace/skills/skill-generator/
+
+# 或者克隆整个仓库
+git clone https://github.com/DYF996/skill-generator.git ~/.qclaw/workspace/skills/skill-generator
 ```
 
-然后直接开始：
+**方法二：使用 Git**
+
+```bash
+git clone https://github.com/DYF996/skill-generator.git ~/.qclaw/workspace/skills/skill-generator
+```
+
+---
+
+### ✅ 验证安装 / Verify Installation
+
+安装完成后，说一句话测试一下：
 
 ```
-> 生成技能 整理我的下载文件夹
-> 先计划 每月自动备份重要文件
-> 做 帮我写一封求职邮件
+生成技能 测试
 ```
+
+如果 AI 回复了生成技能的流程，说明安装成功！
+
+---
+
+### 🔧 常见问题 / Troubleshooting
+
+| 问题 | 解决方案 |
+|------|----------|
+| Skill 没有加载 | 重启 OpenClaw |
+| 找不到目录 | 检查路径是否有拼写错误 |
+| 权限不足 | 给目录设置读写权限 |
+| 需要更新 | `git pull` 或重新下载最新版本 |
+
+---
+
+### 📁 推荐目录结构 / Recommended Structure
+
+```
+~/.qclaw/workspace/skills/skill-generator/
+├── SKILL.md                    # ⭐ 必须文件
+├── references/                 # 可选：参考文档
+│   ├── skill_spec.md
+│   └── interactive_protocol.md
+└── README.md                   # 可选：本文件
+```
+
+---
 
 ## 📖 工作原理
 
@@ -60,16 +142,6 @@ AI：
 - 📧 **邮件处理**：自动生成、批量回复
 - 🗂️ **文件管理**：分类整理、批量重命名
 - 🔍 **研究调研**：多源搜索、内容汇总
-
-## 🔧 技术细节
-
-```
-skill-generator/
-├── SKILL.md                    # 主技能文件
-└── references/                 # 参考文档
-    ├── skill_spec.md          # Skill 规范
-    └── interactive_protocol.md # 交互协议
-```
 
 ## 🤝 贡献
 
